@@ -15,7 +15,7 @@ class App extends React.Component {
       phone: '',
 
       creditCard: '',
-      expdate: '',
+      expDate: '',
       cvv: '',
       billingZip: '',
 
@@ -50,16 +50,20 @@ class App extends React.Component {
     }
   }
 
+
+
   handleCheckout(){
-    fetch('/checkout', {
+
+    const options = {
       method: 'POST',
       headers: {
         'Accept':'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        
-      })
+      body: JSON.stringify(this.state)
+    }
+    fetch('/checkout', options).catch(err => {
+      console.log('Request failed', err)
     })
   }
 
